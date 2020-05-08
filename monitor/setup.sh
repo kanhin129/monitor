@@ -6,6 +6,6 @@
 git-monitor-location=`pwd`
 
 #寫入排程
-echo "*/5 * * * * root $pwd/腳本-1.sh"
-echo "*/5 * * * * root $pwd/腳本-2.sh"
+echo "*/5 * * * * root $pwd/腳本-1.sh >> /etc/crontab"
+echo "*/5 * * * * root $pwd/腳本-2.sh >> /etc/crontab"
 
