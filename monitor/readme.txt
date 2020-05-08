@@ -2,4 +2,4 @@
 
 安裝方式為
 
-sh install.sh
+sh setup.sh
