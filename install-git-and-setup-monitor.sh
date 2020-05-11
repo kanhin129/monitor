@@ -8,9 +8,13 @@ function SystemName() {
     source /etc/os-release
     case $ID in
         centos|fedora|rhel)
-            yum install -y nc bc nodejs git
+            yum install epel-release
+            yum install -y nc bc nodejs git vim
             npm install -g wscat
+            #安装n
             npm install -g n
+            # 安装nodejs版本
+            n latest
             ;;
 
         debian|ubuntu|devuan)
