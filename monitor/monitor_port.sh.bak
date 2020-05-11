@@ -1,0 +1,33 @@
+#!/bin/bash
+
+LIST='./list.txt'
+
+get_res(){
+    _domain=$1
+    _port=$2
+    nc -v -z -w 3 "$domain" "$port" > /dev/null 2>&1 && echo "Online" || echo "Offline"
+}
+
+while read line; do
+    domain=`echo $line |cut -d "," -f1`
+    port=`echo $line |cut -d "," -f2`
+    res=$(get_res $domain $port)  
+    
+    #判斷回傳值如果是Offline則,進行第2次掃描
+    if [ "$res" = "Offline" ];then
+        cnt=0
+        for i in {1..2};do
+            dubble_check=$(get_res $domain $port)
+            if [ "$dubble_check" = "Offline" ];then
+                cnt=$((cnt+1))
+                echo $cnt
+            fi
+        done
+        #如果第2次掃描也出現Offline,則輸出端口錯誤
+        if [ "$cnt" -ge 1  ];then
+            echo "Error"
+        fi
+    else 
+        echo "Success"
+    fi
+done < $LIST

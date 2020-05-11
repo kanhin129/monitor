@@ -1,0 +1,11 @@
+ws.silverlighting.net,443
+ws-test.silverlighting.net,443
+games.silverlighting.net,443
+maintain.silverlighting.net,443
+crm.silverlighting.net,443
+crm-test.silverlighting.net,443
+api.silverlighting.net,443
+gms.silverlighting.net,443
+pp-history.silverlighting.net,443
+pp-history-test.silverlighting.net,443
+ppo-history-test.silverlighting.net,443
