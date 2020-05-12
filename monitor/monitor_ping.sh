@@ -2,6 +2,7 @@
 LIST='/opt/manager-tools/monitor/list.txt'
 BOT='/opt/manager-tools/python_bot/zbxtg_group.py'
 GROUP='BCowtech-alert'
+HOST=`hostname`
 
 while read line; do
 
@@ -23,7 +24,7 @@ while read line; do
 
         #判斷 ping rtt ms 的回傳值,如果>=100則輸出 pack loss 50%
         if [ `echo "$rtt_value > 100" |bc` -eq 1 ];then
-            python $BOT "$GROUP" "Ping Error" "$domain rtt average over 100ms"
+            python $BOT "$GROUP" "From-${HOST} Ping Error" "$domain rtt average over 100ms"
 
         fi
     fi

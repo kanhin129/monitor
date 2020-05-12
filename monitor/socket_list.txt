@@ -1,2 +1,9 @@
 wss://ws.silverlighting.net/fishingking/lobby
+wss://ws.silverlighting.net/fishingking/lobby-000
+wss://ws.silverlighting.net/fishingking/lobby-001
+wss://ws.silverlighting.net/fishingking/game
+wss://ws-test.silverlighting.net/fishingking/lobby
+wss://ws-test.silverlighting.net/fishingking/lobby-000
+wss://ws-test.silverlighting.net/fishingking/lobby-001
+wss://ws-test.silverlighting.net/fishingking/game
 wss://ws-test.silverlighting.net/fishingking/game1

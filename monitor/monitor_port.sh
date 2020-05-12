@@ -2,6 +2,7 @@
 LIST='/opt/manager-tools/monitor/list.txt'
 BOT='/opt/manager-tools/python_bot/zbxtg_group.py'
 GROUP='BCowtech-alert'
+HOST=`hostname`
 
 while read line; do
     cnt=0
@@ -20,6 +21,6 @@ while read line; do
     done
     #如果掃描掃有兩次是offline則輸出Error           
     if [ "$cnt" -ge 2  ];then
-            python $BOT "$GROUP" "Port Error" "$domain : $port is down"
+            python $BOT "$GROUP" "From-${HOST} Port Error" "$domain : $port is down"
     fi
 done < $LIST
