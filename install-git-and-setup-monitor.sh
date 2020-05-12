@@ -15,6 +15,10 @@ function SystemName() {
             npm install -g n
             # 安装nodejs版本
             n latest
+            #安裝pip
+            yum install -y python-pip
+            #安裝python requests
+            pip install requests
             ;;
 
         debian|ubuntu|devuan)
@@ -30,7 +34,7 @@ function SystemName() {
 }
 
 #執行安裝指令
-SystemName
+#SystemName
 
 echo "*/5 * * * * root ${script_path}/monitor_dns.sh" >> /etc/crontab
 echo "*/5 * * * * root ${script_path}/mmonitor_ping.sh" >> /etc/crontab

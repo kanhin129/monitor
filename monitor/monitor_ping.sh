@@ -1,5 +1,7 @@
 #!/bin/bash
-LIST='./list.txt'
+LIST='/opt/manager-tools/monitor/list.txt'
+BOT='/opt/manager-tools/python_bot/zbxtg_group.py'
+GROUP='BCowtech-alert'
 
 while read line; do
 
@@ -16,12 +18,12 @@ while read line; do
         #echo $rtt_value
         #判斷 ping pack loss 的回傳值,如果>=50則輸出 pack loss 50%
         if [ $lost_value -ge 50 ]; then
-            echo "$domain pack loss 50%"
+            python $BOT "$GROUP" "Ping Error" "$domain Pack loss 50%"
         fi
 
         #判斷 ping rtt ms 的回傳值,如果>=100則輸出 pack loss 50%
         if [ `echo "$rtt_value > 100" |bc` -eq 1 ];then
-            echo "$domain rtt average over 100ms"
+            python $BOT "$GROUP" "Ping Error" "$domain rtt average over 100ms"
 
         fi
     fi
