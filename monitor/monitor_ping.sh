@@ -1,6 +1,6 @@
 #!/bin/bash
-LIST='/opt/manager-tools/monitor/list.txt'
-BOT='/opt/manager-tools/python_bot/zbxtg_group.py'
+LIST='/root/gitlab-project/manager-tools/monitor/list.txt'
+BOT='/root/gitlab-project/manager-tools/python_bot/zbxtg_group.py'
 GROUP='BCowtech-alert'
 HOST=`hostname`
 
