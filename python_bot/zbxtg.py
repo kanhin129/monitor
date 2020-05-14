@@ -78,7 +78,6 @@ class TelegramAPI:
     def send_message(self, to, message):
         url = self.tg_url_bot_general + self.key + "/sendMessage"
         message = "\n".join(message)
-        print(message)
         params = {"chat_id": to, "text": message, "disable_web_page_preview": self.disable_web_page_preview,
                   "disable_notification": self.disable_notification}
         if self.reply_to_message_id:

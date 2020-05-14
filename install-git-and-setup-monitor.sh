@@ -9,7 +9,7 @@ function SystemName() {
     case $ID in
         centos|fedora|rhel)
             yum install epel-release
-            yum install -y nc bc nodejs git vim
+            yum install -y nc bc nodejs git vim bind-utils
             npm install -g wscat
             #安装n
             npm install -g n
@@ -18,7 +18,7 @@ function SystemName() {
             #安裝pip
             yum install -y python-pip
             #安裝python requests
-            pip install requests
+            pip install requests websocket_client
             ;;
 
         debian|ubuntu|devuan)

@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 
+#BCowtech BOT
 tg_key = "1229856370:AAGqtcQ7D-dqxKETHWtyoCEfeFvOQhd14vg"  # telegram bot api key
+
+#mytest-BOT
+#tg_key = "1229292390:AAFvXKmKhLosdoifIDsbghHAAp1WgNxcnlY"  # telegram bot api key
 
 zbx_tg_prefix = "zbxtg"  # variable for separating text from script info
 zbx_tg_tmp_dir = "/var/tmp/" + zbx_tg_prefix  # directory for saving caches, uids, cookies, etc.
