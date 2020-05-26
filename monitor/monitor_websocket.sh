@@ -1,8 +1,8 @@
 #!/bin/bash
 LIST='/root/gitlab-project/manager-tools/monitor/socket_list.txt'
 BOT='/root/gitlab-project/manager-tools/python_bot/zbxtg_group.py'
-#GROUP='BCowtech-alert'
-GROUP='james-test'
+GROUP='BCowtech-alert'
+#GROUP='james-test'
 HOST=`hostname`
 
 
