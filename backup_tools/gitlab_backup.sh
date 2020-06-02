@@ -4,7 +4,7 @@ bk_data_path='/mnt/ebs/fs1/gitlab-docker-compose/gitlab_data/backups'
 s3_path='s3://bcowtech-gitlab-backup/gitlab_backup/'
 #start_time=`date "+%Y-%m-%d %H:%M:%S"`
 
-gitlab_id=`docker container ps | grep 'gitlab' | awk '{print $1}'`
+gitlab_id=`docker container ps | grep 'gitlab-ee:12.8.2-ee.0' | awk '{print $1}'`
 bk_name=`docker exec -i $gitlab_id gitlab-rake gitlab:backup:create | grep -E 'tar.*done' |sed  's/^.*: //g' | sed 's/ .*$//g'`
 
 BOT='/root/gitlab-project/manager-tools/python_bot/zbxtg_group.py'
