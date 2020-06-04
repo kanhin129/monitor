@@ -27,7 +27,7 @@ else
     #duration=`echo  $(($(date +%s -d "${end_time}") - $(date +%s -d "${start_time}"))) \
     # | awk '{t=split("60 s 60 m 24 h 999 d",a);for(n=1;n<t;n+=2){if($1==0)break;s=$1%a[n]a[n+1]s;$1=int($1/a[n])}print s}'`
     #使用 aws-cli 搬移備份檔案到 s3
-    /root/.local/bin/aws s3 mv ${bk_data_pathdd}/${bk_name}  $s3_path
+    /root/.local/bin/aws s3 mv "$bk_data_path/$bk_name  $s3_path"
     #執行完成發送成功訊息以及執行所花的時間
     #python $BOT "$GROUP" "Gitlab backup $DATE Ok" "Duration: $duration"
 
