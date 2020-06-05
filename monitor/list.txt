@@ -13,3 +13,4 @@ cn.silverlighting.net,443
 cn-test.silverlighting.net,443
 ws-cn.silverlighting.net,443
 ws-cn-test.silverlighting.net,443
+games.igadapterapi.com,443
