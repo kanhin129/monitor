@@ -33,7 +33,7 @@ function update() {
 	rm -rf ${path}/*
     
     ##複製檔案
-	printf "${YELLOW}Copying  $option $location $device ${NC} \n"
+	printf "${YELLOW}Copying $option $location $device ${NC} \n"
   	cp -r /home/centos/${version}/desktop/* ${path}
 
     ##完成
@@ -48,8 +48,11 @@ if [ ! -n "$option" ] || [ ! -n "$version" ]; then
 ##判斷option
 elif [ "$option" == "2d" ]; then
     ##解壓縮
+    printf "${YELLOW}Parsing... ${NC} \n"
     tar xf "$zip_path/$version.zip"  
-    
+    printf "${GREEN}Parse Down ${NC} \n"
+    echo ""
+        
     if [ -d "$version" ]; then
 
         ##根據option 抓取 list 清單,並加入array
@@ -73,7 +76,10 @@ elif [ "$option" == "2d" ]; then
 ##判斷option                    
 elif [ "$option" == "3d" ]; then
     ##解壓縮,3D版本因為檔名多3D兩個字,解出來的檔名又少了3D兩個字,所以用下ˋ面的方式重新定義
+    printf "${YELLOW}Parsing... ${NC} \n"
     version=`tar xvf "$zip_path/$version.zip" | tail -n 1 | cut -d "/" -f1`
+    printf "${GREEN}Parse Down ${NC} \n"
+    echo ""
 
     if [ -d "$version" ]; then
         ##根據option 抓取 list 清單,並加入array
