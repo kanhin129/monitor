@@ -50,34 +50,51 @@ elif [ "$option" == "2d" ]; then
     ##解壓縮
     tar xf "$zip_path/$version.zip"  
     
-    ##根據option 抓取 list 清單,並加入array
-	path=`cat $path_list | grep $option`
-    array+=($path)
+    if [ -d "$version" ]; then
 
-    for ((i=0; i<${#array[@]}; i++)); do
-        update ${array[$i]}
+        ##根據option 抓取 list 清單,並加入array
+	    path=`cat $path_list | grep $option`
+        array+=($path)
 
-    done
-    echo "2D Down"
+        for ((i=0; i<${#array[@]}; i++)); do
+            update ${array[$i]}
+
+        done
+        echo "2D Down"
+
+        ##刪除解壓縮後的檔案
+        rm -rf "$version"
+
+    else
+        echo "File parse error"
+    fi
     
-    ##刪除解壓縮後的檔案
-    rm -rf "$version"   
 
 ##判斷option                    
 elif [ "$option" == "3d" ]; then
     ##解壓縮,3D版本因為檔名多3D兩個字,解出來的檔名又少了3D兩個字,所以用下ˋ面的方式重新定義
     version=`tar xvf "$zip_path/$version.zip" | tail -n 1 | cut -d "/" -f1`
 
-    ##根據option 抓取 list 清單,並加入array
-    path=`cat $path_list | grep $option`
-    array+=($path)
+    if [ -d "$version" ]; then
+        ##根據option 抓取 list 清單,並加入array
+        path=`cat $path_list | grep $option`
+        array+=($path)
 
-    for ((i=0; i<${#array[@]}; i++)); do
-        update ${array[$i]}
+        for ((i=0; i<${#array[@]}; i++)); do
+            update ${array[$i]}
  
-    done
-    echo "3D Down"      
-    
-    ##刪除解壓縮後的檔案                                                             
-    rm -rf "$version"
+        done
+        echo "3D Down"      
+
+        ##刪除解壓縮後的檔案                                                             
+        rm -rf "$version"
+
+    else
+        echo "File parse error"
+    fi
+
+
+else
+    echo "Input Error"
+    exit 1
 fi
