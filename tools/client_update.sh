@@ -1,9 +1,12 @@
 #!/bin/bash
-
 cd /home/centos
+##參數1 2d or 3d
+##參數2 路徑加檔案名
 option=$1
-version=`echo $2 | cut -d "/" -f4 | cut -d "." -f1`
+#version=`echo $2 | cut -d "/" -f4 | cut -d "." -f1`
+version=`echo $2 | cut -d "." -f1`
 path_list='/root/gitlab-project/manager-tools/tools/path_list.txt'
+zip_path='/home/centos'
 array=()
 
 ##color
@@ -45,7 +48,7 @@ if [ ! -n "$option" ] || [ ! -n "$version" ]; then
 ##判斷option
 elif [ "$option" == "2d" ]; then
     ##解壓縮
-    tar xf "$version.zip"  
+    tar xf "$zip_path/$version.zip"  
     
     ##根據option 抓取 list 清單,並加入array
 	path=`cat $path_list | grep $option`
@@ -63,7 +66,7 @@ elif [ "$option" == "2d" ]; then
 ##判斷option                    
 elif [ "$option" == "3d" ]; then
     ##解壓縮,3D版本因為檔名多3D兩個字,解出來的檔名又少了3D兩個字,所以用下ˋ面的方式重新定義
-    version=`tar xvf "$version.zip" | tail -n 1 | cut -d "/" -f1`
+    version=`tar xvf "$zip_path/$version.zip" | tail -n 1 | cut -d "/" -f1`
 
     ##根據option 抓取 list 清單,並加入array
     path=`cat $path_list | grep $option`
