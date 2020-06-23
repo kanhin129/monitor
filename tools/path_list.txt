@@ -1,0 +1,8 @@
+/mnt/efs/web-efs/aws-nginx-cdn-source-international/www/games-intl-cdnsource.silverlighting.net/fishingking2/desktop-muti,2d,intl,pc
+/mnt/efs/web-efs/aws-nginx-cdn-source-international/www/games-intl-cdnsource.silverlighting.net/fishingking2/mobile-muti,2d,intl,mob
+/mnt/efs/web-efs/aws-nginx-cdn-source-international/www/games-intl-cdnsource.silverlighting.net/fishingking2/desktop-muti-3d,3d,intl,pc
+/mnt/efs/web-efs/aws-nginx-cdn-source-international/www/games-intl-cdnsource.silverlighting.net/fishingking2/mobile-muti-3d,3d,intlmob
+/mnt/efs/web-efs/aws-nginx-cdn-source-china/www/games-cn-cdnsource.silverlighting.net/fishingking2/desktop-muti,2d,cn,pc
+/mnt/efs/web-efs/aws-nginx-cdn-source-china/www/games-cn-cdnsource.silverlighting.net/fishingking2/mobile-muti,2d,cn.mob
+/mnt/efs/web-efs/aws-nginx-cdn-source-china/www/games-cn-cdnsource.silverlighting.net/fishingking2/desktop-muti-3d,3d,cn,pc
+/mnt/efs/web-efs/aws-nginx-cdn-source-china/www/games-cn-cdnsource.silverlighting.net/fishingking2/mobile-muti-3d,3d,cn,mob
