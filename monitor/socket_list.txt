@@ -23,8 +23,4 @@ wss://ws-cn.silverlighting.net/fishingking/lobby-000
 wss://ws-cn.silverlighting.net/fishingking/lobby-001
 wss://ws-cn.silverlighting.net/fishingking/game
 wss://ws-cn-test.silverlighting.net/fishingking/lobby
-wss://ws-cn-test.silverlighting.net/fishingking/lobby-000
-wss://ws-cn-test.silverlighting.net/fishingking/lobby-001
 wss://ws-cn-test.silverlighting.net/fishingking/game
-wss://ws-test.igadapterapi.com/fishingking/lobby
-wss://ws-test.igadapterapi.com/fishingking/game
