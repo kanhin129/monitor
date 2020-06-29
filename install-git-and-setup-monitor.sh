@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-script_path='/opt/manager-tools/monitor'
+script_path='/root/gitlab-project/manager-tools/monitor'
 
 #安裝git
 function SystemName() {
