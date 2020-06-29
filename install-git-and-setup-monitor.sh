@@ -19,6 +19,8 @@ function SystemName() {
             # 安装nodejs版本
             n latest
             #安裝python requests
+            yum install python-pip
+            pip install requests
             pip3 install requests websocket_client
             ;;
 
