@@ -34,7 +34,7 @@ function SystemName() {
 }
 
 #執行安裝指令
-#SystemName
+SystemName
 
 echo "*/5 * * * * root ${script_path}/monitor_dns.sh" >> /etc/crontab
 echo "*/5 * * * * root ${script_path}/mmonitor_ping.sh" >> /etc/crontab
