@@ -11,7 +11,7 @@ HOST=`hostname`
 #for line in $(cat $LIST);do
 while read line; do
     
-    res=`python /root/gitlab-project/manager-tools/monitor/conn_ws.py $line 2>&1 | head -n 1`
+    res=`python3 /root/gitlab-project/manager-tools/monitor/conn_ws.py $line 2>&1 | head -n 1`
     if [ "$res" != "ok" ];then
         python $BOT "$GROUP" "From-${HOST}" "$(echo -e "Problem: WS Error\nDomain: ${line}\nStatus: ${res}")"
     fi
