@@ -5,10 +5,13 @@ GROUP='BCowtech-alert'
 HOST=`hostname`
 
 while read line; do
-
-    domain=`echo $line | cut -d "," -f1 `
+    
+    #8da3b5b2開頭是沒有開ping的域名
+    domain=`echo $line | grep -v '8da3b5b2' |cut -d "," -f1 `
+    echo $domain
+    
     #res=`ping -c 2 "$domain" 2>&1 | grep packets | cut -d "," -f 3 |  cut -d " " -f 2  | sed 's/%//g' `
-    res=`ping -c 5 "$domain" 2>&1`
+    res=`ping -c 1 "$domain" 2>&1`
 
     #檢查ping指令有沒有錯誤
     value=`echo $?`
