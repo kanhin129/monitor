@@ -19,6 +19,8 @@ while read line; do
     fi
 done  < $LIST
 
+sleep 10
+
 #第二次檢測 level2
 for ((i=0; i<${#array[@]}; i++)); do
     #echo ${array[$i]}
@@ -30,6 +32,8 @@ for ((i=0; i<${#array[@]}; i++)); do
     fi
     sleep 3
 done
+
+sleep 30
 
 #第三次檢測 level3
 if [ -f "$tmp_file" ]; then
