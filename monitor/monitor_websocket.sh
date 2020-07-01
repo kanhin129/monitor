@@ -30,7 +30,6 @@ for ((i=0; i<${#array[@]}; i++)); do
         python $BOT "$GROUP" "From-${HOST}" "$(echo -e "Problem: WS Error {{fire}}{{fire}}Level2{{fire}}{{fire}}  \nDomain: ${ws_domain}\nStatus: ${res}")"
         echo "$ws_domain" >> $tmp_file
     fi
-    sleep 3
 done
 
 sleep 30
