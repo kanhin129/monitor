@@ -32,13 +32,15 @@ for ((i=0; i<${#array[@]}; i++)); do
 done
 
 #第三次檢測 level3
-while read line; do
-    cnt=0
-    res=`python3 /root/gitlab-project/manager-tools/monitor/conn_ws.py $line 2>&1 | head -n 1 `
-    if [ "$res" != "ok" ];then
-        python $BOT "$GROUP" "From-${HOST}" "$(echo -e "Problem: WS Error {{fire}}{{fire}}{{fire}}Level3{{fire}}{{fire}}{{fire}} \nDomain: ${line}\nStatus: ${res}")"
-    fi
-done  < $tmp_file
+if [ -f "$tmp_file" ]; then
+    while read line; do
+        cnt=0
+        res=`python3 /root/gitlab-project/manager-tools/monitor/conn_ws.py $line 2>&1 | head -n 1 `
+        if [ "$res" != "ok" ];then
+            python $BOT "$GROUP" "From-${HOST}" "$(echo -e "Problem: WS Error {{fire}}{{fire}}{{fire}}Level3{{fire}}{{fire}}{{fire}} \nDomain: ${line}\nStatus: ${res}")"
+        fi
+    done  < $tmp_file
+fi
 
 #刪除ws_domain暫存檔
 rm -rf $tmp_file
