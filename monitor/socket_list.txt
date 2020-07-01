@@ -16,10 +16,6 @@ wss://ws-test.silverlighting.net/fishingking/lobby-000
 ws://ws-intl-test-cdnsource.silverlighting.net/fishingking/lobby-000
 wss://ws-test.silverlighting.net/fishingking/lobby-001
 ws://ws-intl-test-cdnsource.silverlighting.net/fishingking/lobby-001
-wss://ws-test.silverlighting.net/fishingking/lobby-002
-ws://ws-intl-test-cdnsource.silverlighting.net/fishingking/lobby-002
-wss://ws-test.silverlighting.net/fishingking/lobby-003
-ws://ws-intl-test-cdnsource.silverlighting.net/fishingking/lobby-003
 wss://ws-test.silverlighting.net/fishingking/game
 ws://ws-intl-test-cdnsource.silverlighting.net/fishingking/game
 wss://ws-cn.silverlighting.net/fishingking/lobby
