@@ -26,7 +26,6 @@ for ((i=0; i<${#array[@]}; i++)); do
     res=`python3 /root/gitlab-project/manager-tools/monitor/conn_ws.py $ws_domain 2>&1 | head -n 1 `
     if [ "$res" != "ok" ]; then
         python $BOT "$GROUP" "From-${HOST}" "$(echo -e "Problem: WS Error {{fire}}{{fire}}Level2{{fire}}{{fire}}  \nDomain: ${ws_domain}\nStatus: ${res}")"
-        echo "$ws_domain" >> $tmp_file
         array2+=($ws_domain)
     fi
 done
