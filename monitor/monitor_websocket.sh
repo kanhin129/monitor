@@ -13,7 +13,7 @@ array2=()
 while read line; do
     res=`python3 /root/gitlab-project/manager-tools/monitor/conn_ws.py $line 2>&1 | head -n 1 `
     if [ "$res" != "ok" ];then
-        python $BOT "$GROUP" "From-${HOST}" "$(echo -e "Problem: WS Error {{fire}}Level1{{fire}} \nDomain: ${line}\nStatus: ${res}")"
+        #python $BOT "$GROUP" "From-${HOST}" "$(echo -e "Problem: WS Error {{fire}}Level1{{fire}} \nDomain: ${line}\nStatus: ${res}")"
         array+=($line)
     fi
 done  < $LIST
