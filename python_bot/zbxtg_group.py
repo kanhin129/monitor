@@ -27,7 +27,9 @@ class Cache:
 
 class TelegramAPI:
     tg_url_bot_general = "https://api.telegram.org/bot"
-
+    
+    #阿里雲機器需要透過泰國機器轉發
+    #tg_url_bot_general = "http://api.telegram.org/bot"
     def http_get(self, url):
         answer = requests.get(url, proxies=self.proxies)
         self.result = answer.json()
