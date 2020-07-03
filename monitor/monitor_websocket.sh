@@ -18,27 +18,34 @@ while read line; do
     fi
 done  < $LIST
 
-sleep 10
+#判斷arrya是否為空,有值才繼續執行
+if [ -n "$array" ];then
 
-#第二次檢測 level2
-for ((i=0; i<${#array[@]}; i++)); do
-    ws_domain=${array[$i]}
-    res=`python3 /root/gitlab-project/manager-tools/monitor/conn_ws.py $ws_domain 2>&1 | head -n 1 `
-    if [ "$res" != "ok" ]; then
-        python $BOT "$GROUP" "From-${HOST}" "$(echo -e "Problem: WS Error {{fire}}{{fire}}Level2{{fire}}{{fire}}  \nDomain: ${ws_domain}\nStatus: ${res}")"
-        array2+=($ws_domain)
-    fi
-done
+    sleep 10
+    
+    #第二次檢測 level2
+    for ((i=0; i<${#array[@]}; i++)); do
+        ws_domain=${array[$i]}
+        res=`python3 /root/gitlab-project/manager-tools/monitor/conn_ws.py $ws_domain 2>&1 | head -n 1 `
+        if [ "$res" != "ok" ]; then
+            python $BOT "$GROUP" "From-${HOST}" "$(echo -e "Problem: WS Error {{fire}}{{fire}}Level2{{fire}}{{fire}}  \nDomain: ${ws_domain}\nStatus: ${res}")"
+            array2+=($ws_domain)
+        fi
+    done
+fi
 
-sleep 30
+#判斷arrya2是否為空,有值才繼續執行
+if [ -n "$array2" ];then
 
-#第三次檢測 level3
-for((i=0; i<${#array2[@]}; i++)); do
-    ws_domain=${array2[$i]}
-    #while read line; do
-    res=`python3 /root/gitlab-project/manager-tools/monitor/conn_ws.py $ws_domain 2>&1 | head -n 1 `
-    if [ "$res" != "ok" ];then
-        python $BOT "$GROUP" "From-${HOST}" "$(echo -e "Problem: WS Error {{fire}}{{fire}}{{fire}}Level3{{fire}}{{fire}}{{fire}} \nDomain: ${ws_domain}\nStatus: ${res}")"
-    fi
-done
-
+    sleep 30
+    
+    #第三次檢測 level3
+    for((i=0; i<${#array2[@]}; i++)); do
+        ws_domain=${array2[$i]}
+        #while read line; do
+        res=`python3 /root/gitlab-project/manager-tools/monitor/conn_ws.py $ws_domain 2>&1 | head -n 1 `
+        if [ "$res" != "ok" ];then
+            python $BOT "$GROUP" "From-${HOST}" "$(echo -e "Problem: WS Error {{fire}}{{fire}}{{fire}}Level3{{fire}}{{fire}}{{fire}} \nDomain: ${ws_domain}\nStatus: ${res}")"
+        fi
+    done
+fi
