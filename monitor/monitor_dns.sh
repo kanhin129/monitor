@@ -18,25 +18,31 @@ while read line; do
     fi
 done < $LIST
 
-sleep 10
+#判斷arrya是否為空,有值才繼續執行
+if [ -n "$array" ];then
+    sleep 10
+    
+    #第二次檢測 level2
+    for ((i=0; i<${#array[@]}; i++)); do
+        domain=${array[$i]}
+        res=`nslookup $domain | grep -i "can't find"`
+        if [  -n "$res"  ];then
+            python $BOT "$GROUP" "From-${HOST}" "$(echo -e "DNS Error {{fire}}{{fire}}Level2{{fire}}{{fire}}  \nDomain: $domain Parse error")"
+            array2+=($domain)
+        fi
+    done
+fi
 
-#第二次檢測 level2
-for ((i=0; i<${#array[@]}; i++)); do
-    domain=${array[$i]}
-    res=`nslookup $domain | grep -i "can't find"`
-    if [  -n "$res"  ];then
-        python $BOT "$GROUP" "From-${HOST}" "$(echo -e "DNS Error {{fire}}{{fire}}Level2{{fire}}{{fire}}  \nDomain: $domain Parse error")"
-        array2+=($domain)
-    fi
-done
-
-sleep 30
-
-#第三次檢測 level3
-for ((i=0; i<${#array2[@]}; i++)); do
-    domain=${array2[$i]}
-    res=`nslookup $domain | grep -i "can't find"`
-    if [  -n "$res"  ];then
-        python $BOT "$GROUP" "From-${HOST}" "$(echo -e "DNS Error {{fire}}{{fire}}{{fire}}Level3{{fire}}{{fire}}{{fire}}  \nDomain: $domain Parse error")"
-    fi
-done
+#判斷arrya2是否為空,有值才繼續執行
+if [ -n "$array2" ];then
+    sleep 30
+    
+    #第三次檢測 level3
+    for ((i=0; i<${#array2[@]}; i++)); do
+        domain=${array2[$i]}
+        res=`nslookup $domain | grep -i "can't find"`
+        if [  -n "$res"  ];then
+            python $BOT "$GROUP" "From-${HOST}" "$(echo -e "DNS Error {{fire}}{{fire}}{{fire}}Level3{{fire}}{{fire}}{{fire}}  \nDomain: $domain Parse error")"
+        fi
+    done
+fi
