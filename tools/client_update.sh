@@ -34,7 +34,7 @@ function update() {
     
     ##複製檔案
 	printf "${YELLOW}Copying $option $location $device ${NC} \n"
-  	cp -r /home/centos/${version}/desktop/* ${path}
+  	cp -r /home/centos/${version}/${device}/* ${path}
 
     ##完成
     printf "${GREEN}Copy complete $option $location $device${NC} \n\n"
@@ -49,7 +49,8 @@ if [ ! -n "$option" ] || [ ! -n "$version" ]; then
 elif [ "$option" == "2d" ]; then
     ##解壓縮
     printf "${YELLOW}Parsing... ${NC} \n"
-    tar xf "$zip_path/$version.zip"  
+    tar zxf "$zip_path/$version.zip"  
+    #unzip "$zip_path/$version.zip"  
     printf "${GREEN}Parse Down ${NC} \n"
     echo ""
         
@@ -78,6 +79,7 @@ elif [ "$option" == "3d" ]; then
     ##解壓縮,3D版本因為檔名多3D兩個字,解出來的檔名又少了3D兩個字,所以用下ˋ面的方式重新定義
     printf "${YELLOW}Parsing... ${NC} \n"
     version=`tar xvf "$zip_path/$version.zip" | tail -n 1 | cut -d "/" -f1`
+    #unzip "$zip_path/$version.zip"
     printf "${GREEN}Parse Down ${NC} \n"
     echo ""
 
