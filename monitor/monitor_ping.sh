@@ -66,9 +66,14 @@ done < $LIST
 
 
 function level2_check() {
-    sleep 10
-    check_array=$1
-    
+    level=$1
+    check_array=$2
+    if [ "$level" == 'L2' ];then
+        sleep 10
+    elif [ "$level" == 'L3' ];then
+        sleep 30
+    fi
+
     #第二次檢測 level2
     for ((i=0; i<${#check_array[@]}; i++)); do
         domain=${check_array[$i]}
@@ -79,28 +84,46 @@ function level2_check() {
         #判斷 ping pack loss 的回傳值,如果>=50則輸出 pack loss 50%
         #if [[ $lost_value -ge 50 ]]; then
         if [[ $lost_value -ge 0 ]]; then
-            python $BOT "$GROUP" "From-${HOST}" "$(echo -e "Ping Error {{fire}}{{fire}}Level2{{fire}}{{fire}}  \nDomain: ${domain}\n Status: Pack loss 50%")"
+            
             array_lost2+=($domain)
+            echo "err"
         fi
         
         rtt_value=$(get_ping_data "$domain" "rtt")
         #獲取ping 平均回應時間
         #if  [[ -n "$rtt_value" ]] &&  [[ `echo "$rtt_value > 100" | bc` -eq 1 ]];then
         if  [[ -n "$rtt_value" ]] &&  [[ `echo "$rtt_value > 0" | bc` -eq 1 ]];then
-            python $BOT "$GROUP" "From-${HOST}" "$(echo -e "Ping Error {{fire}}{{fire}}Level2{{fire}}{{fire}}  \nDomain: ${domain}\n Status: average over 100ms")"
+            
             array_rtt2+=($domain)
+            echo "err"
         fi
 
     done
 }
 
-#exit
-
 if [ -n "$array_lost" ]; then
-    value_check "$array_lost"
+    return=$(value_check "L2" "$array_lost")
+    if [ "$return" == 'err' ];
+        python $BOT "$GROUP" "From-${HOST}" "$(echo -e "Ping Error {{fire}}{{fire}}Level2{{fire}}{{fire}}  \nDomain: ${domain}\n Status: Pack loss 50%")"
+    fi
 
 elif [ -n "$array_rtt" ]; then
-    value_check "$array_rtt"
+    return=$(value_check "L3" "$array_rtt")
+    if [ "return" == 'err' ]
+        python $BOT "$GROUP" "From-${HOST}" "$(echo -e "Ping Error {{fire}}{{fire}}Level2{{fire}}{{fire}}  \nDomain: ${domain}\n Status: average over 100ms")"
+    fi
+    
+elif [ -n "$array_rtt2" ]; then
+    return=$(value_check "L3" "$array_rtt")
+    if [ "return" == 'err' ]
+        python $BOT "$GROUP" "From-${HOST}" "$(echo -e "Ping Error {{fire}}{{fire}}{{fire}}Level2{{fire}}{{fire}}{{fire}}  \nDomain: ${domain}\n Status: average over 100ms")"
+    fi
+    
+elif [ -n "$array_rtt2" ]; then
+    return=$(value_check "L3" "$array_rtt")
+    if [ "return" == 'err' ]
+        python $BOT "$GROUP" "From-${HOST}" "$(echo -e "Ping Error {{fire}}{{fire}}{{fire}}Level2{{fire}}{{fire}}{{fire}}  \nDomain: ${domain}\n Status: average over 100ms")"
+    fi
 
 fi
     
