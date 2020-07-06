@@ -40,7 +40,7 @@ function SystemName() {
 SystemName
 
 echo "*/5 * * * * root ${script_path}/monitor_dns.sh" >> /etc/crontab
-echo "*/5 * * * * root ${script_path}/mmonitor_ping.sh" >> /etc/crontab
+echo "*/5 * * * * root ${script_path}/monitor_ping.sh" >> /etc/crontab
 echo "*/5 * * * * root ${script_path}/monitor_port.sh" >> /etc/crontab
 echo "*/5 * * * * root ${script_path}/monitor_websocket.sh" >> /etc/crontab
 
